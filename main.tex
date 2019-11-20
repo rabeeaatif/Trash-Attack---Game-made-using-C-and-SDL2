@@ -1,0 +1,195 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{colortbl}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{xcolor}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule{}
+\runningfootrule{}
+\runningheader{CS 224}{Project}{Fall 2019}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+
+\title{Project: The Game}
+\author{CS 224 Object Oriented Programming and Design Methodologies\\Habib University\\Summer 2019}
+\date{Due: 18h on Wednesday, 18 December}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{questions}
+\titledquestion{The Project}
+
+You have to implement a game using \href{https://www.libsdl.org}{SDL 2.0}. You are free to use external assets for your game provided their sources are duly acknowledged. The game must incorporate the following features.
+
+\begin{tabular}{|l|l|}
+  \hline
+  Technical Requirements & Thematic Requirements\\
+  \hline\hline
+  --  polymorphism & -- interaction \\
+  --  at least 4 design patterns$^*$ & -- set in the context of Habib University.$^*$ \\
+  --  contains at least one menu with buttons. &\\
+  --  file I/O &\\
+  --  operator overloading & \\
+  --  memory management & \\
+  --  good programming style &\\
+  \hline
+\end{tabular}\\
+$*$ - For NN section, at least 3 design patterns are required and there is no restriction on the theme.
+
+\titledquestion{Team and Team Lead}
+The project is developed as a team. One of the members is designated as the \emph{team lead}. 
+\begin{itemize}
+\item Each member must develop at least 5 classes.
+\item The team lead may develop 1 to 2 fewer classes.
+\end{itemize}
+
+\textit{In addition to} their contribution to the game as a regular member, the team lead has the following responsibilities.
+\begin{itemize}
+\item Logistics
+  \begin{itemize}
+  \item ensure that the time-lines decided within the team are met
+  \item ensure that the necessary meetings take place for the milestones to be met
+  \end{itemize}
+  \begin{itemize}
+  \item ensure that the game builds incrementally, i.e.\ there is a running version of the game at every milestone
+  \end{itemize}
+\item Videos (see Section~\ref{sec:videos} for details of the required videos)
+  \begin{itemize}
+  \item create a YouTube channel or playlist for the project which will contain project videos.
+  \item submit links to project progress videos during the development of the project.
+  \item submit a link to a game demo video after the demo session.
+  \item optionally, submit footage of people playing your game at the demo session.
+  \end{itemize}
+  % \item All videos are to be uploaded to the project's channel/playlist on YouTube and a link to the appropriate video is to be submitted on \href{https://habibedu.facebook.com/groups/329110924676782/permalink/356354191952455/}{Workplace}.
+\item Submission: make the final submission by the deadline.
+\end{itemize}
+
+\titledquestion{Videos}
+\label{sec:videos}
+
+Project videos consist of weekly progress videos, a final demo video, and an optional footage video. All of these must be pat of a single YouTube channel or playlist. A link to each video must be posted on \href{https://habibedu.workplace.com/groups/454695375131714/permalink/510521982882386/}{WorkPlace} by its deadline.
+
+\paragraph{Weekly Progress Videos} These report on the progress of the game so far. Each video should follow the format below.
+\begin{description}
+\item[-- up to 1 minute] a introduction by the team lead covering
+  \begin{itemize}
+  \item the progress till the last video
+  \item what has been achieved since then
+  \end{itemize}
+\item[-- up to 1 minute each] a segment by each member, including the team lead, on their contribution over the past week
+\item[-- up to 1 minute] a conclusion by the team lead that
+  \begin{itemize}
+  \item ties all the individual contributions into a demo of a working whole
+  \item recaps the progress since last week and a comment on the current state of the game
+  \item lists what to expect next week
+  \end{itemize}
+\item[-- identification] each segment should have some text on the screen identifying the speaker.
+\item[-- sound quality] sound should be clear and loud enough to be easily understandable. 
+\item[-- video quality] video should be clear and of reasonable resolution.
+\end{description}
+These videos are best recorded as screen captures. The first progress video is due \textit{on Wednesday, 20 November}.
+
+\paragraph{Demo Video} This video is due by the end of demo day. It should contain
+\begin{itemize}
+\item a screen capture of the gameplay
+\item accompanying commentary explaining the game
+\item optionally, any other fun stuff the team may want to include
+\end{itemize}
+
+\paragraph{Footage Video (optional)} This is live footage captured on demo day of people playing the game or commenting on it.
+
+
+\titledquestion{Final Submission}
+  The submission must be completed by the deadline. The files in the team lead's repository at the time of the deadline will be taken as the team's submission. The following must be included in the submission.
+  \begin{enumerate}
+  \item All header and implementation files and assets in a directory structure such that the submission \textit{compiles as is}. Please do not include unnecessary files, e.g.\ frameworks, DLLs, IDE files.
+  \item The final UML.
+  \item A team photo. This photo may additionally be included in the demo video.
+  \item A \texttt{README} file containing
+    \begin{enumerate}
+    \item the title and a brief description of the game and its controls
+    \item the names of all the team members
+    \item any special compilation instructions, e.g.\ use of additional packages
+    \item acknowledgment of outside sources
+    \item a link to the project's YouTube channel/playlist.
+    \item a description of how the game satisfies each of the requirements mentioned in Section~\ref{sec:project}.
+    \item a note on the contribution of \textit{each} team member.
+    \item the number of hours in total that it took the team to complete the project.
+    \item any other feedback or information the team may want to include.
+    \end{enumerate}
+  \end{enumerate}
+  
+  \titledquestion{Grading}
+  Each member will receive a score which will be the product of the \textit{submission score} and their \textit{contribution factor}.
+  \paragraph{Submission Score} The submission will be graded using the rubric below. If a thematic requirement from above is not met, marks will be additionally deducted.\\
+  \begin{tabularx}{\textwidth}{|p{.9\textwidth}|R|}
+    \hline    \rowcolor{lightgray}
+\multicolumn{2}{|l|}{\textbf{Code Correctness}} \\\hline 
+All required submissions are completed in time. & 5\\\hline
+The submitted files compile as-is. & 5\\\hline
+The submission does not crash. & 5\\\hline
+Memory is correctly managed. & 5\\\hline
+    \hline    \rowcolor{lightgray}
+\multicolumn{2}{|l|}{\textbf{Style}} \\\hline 
+Comments provide a good overview of functionality without being excessive or sparse. & 5\\\hline
+Code is modular - short functions that are frequently reused. & 5\\\hline
+Code is readable - good variable names, consistent style regarding white space and documentation. & 5\\\hline
+    \hline    \rowcolor{lightgray}
+\multicolumn{2}{|l|}{\textbf{Logistics}} \\\hline 
+Videos are submitted punctually. & 10\\\hline
+A final UML is submitted. & 5\\\hline
+A working demo is presented on demo day. & 10\\\hline
+    \hline    \rowcolor{lightgray}
+\multicolumn{2}{|l|}{\textbf{Game}} \\\hline 
+Polymorphism is implemented. & 5\\\hline
+At least 4 design patterns are implemented. & 5\\\hline
+At least 1 menu with working buttons is implemented. & 5\\\hline
+Operator Overloading is used & 5\\\hline
+File I/O is incorporated. & 5\\\hline
+The graphics are smooth, i.e.\ not glitchy. & 5\\\hline
+The controls are smooth, i.e.\ not glitchy. & 5\\\hline
+Code and UML match. & 5    \\\hline
+\end{tabularx}
+Each category will be assigned an integer score as follows.\\
+\begin{tabular}{|l|l|}
+  \hline
+  3 & The requirement is fully met.\\\hline
+  2 & The requirement is partially met with few bugs or shortcomings.\\\hline
+  1 & The requirement is partially met with many bugs or shortcomings.\\\hline
+  0 & The requirement is not met.\\\hline
+\end{tabular}
+
+\paragraph{Contribution Factor} Each member may be assigned a score between 0 and 1 based on several of the following factors. \\
+\begin{tabularx}{\textwidth}{|l|X|}
+  \hline
+  Weekly Videos & The member's contribution to the progress reported in that week's video.\\\hline
+  Project Demo & The member's participation in the project demo in finals week.\\\hline
+  Viva & The member's performance in the viva at the end of the term.\\\hline
+  Teamwork & As indicated by the team lead in the \texttt{README} in the final submission.\\\hline
+  Punctuality$^\dagger$ & The timeliness of the submissions.\\\hline
+  Integration$^\dagger$ & Integration of individual members' contributions into a working whole at each progress video.\\\hline
+\end{tabularx}
+$\dagger$ - for team leads only.
+
+Which of the above will be used for your team and how these factors will be aggregated should be clarified by the team leads with their section instructor and then communicated to their team members.
+
+
+\section*{Credits}
+This project is modeled after those given by \href{https://habib.edu.pk/SSE/dr-umair-azfar-khan/}{Umair Azfar Khan}.
+
+\end{questions}
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
