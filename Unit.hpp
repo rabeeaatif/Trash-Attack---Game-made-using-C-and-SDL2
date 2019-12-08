@@ -1,34 +1,41 @@
 #pragma once
-#include "Node.hpp"
-#include "LTexture.hpp"
-#include "Point.hpp"
 
+#include <SDL.h>
+#include <SDL_image.h>
+
+#include <cstdio>
+#include <iostream>
+#include "LTexture.hpp"
+
+using namespace std;
+enum MOTION
+{
+    RIGHT,
+    LEFT
+};
 class Unit
 {
-    protected:
-    Point position;
-    LTexture* spritetexture;
+protected:
     bool alive;
-    SDL_Rect mover;
-    float width;
-    float height;
+    int x;
+    int y;
+    float speedx;
+    float speedy;
+    int width;
+    int height;
+    LTexture *spriteSheetTexture;
 
-    public:
-    Unit(LTexture* , Point);
+public:
     Unit();
-    ~Unit();
-    //virtual ~Unit();
+    Unit(LTexture *image, float x, float y);
+    virtual ~Unit();
     void SetAlive(bool);
     bool GetAlive();
     int GetWidth();
     int GetHeight();
     float GetX();
     float GetY();
-    void moveleft();
-    void moveright();
-    virtual void Render(long int& frame, SDL_Renderer* gRenderer, bool debug);
-    
+    virtual void Move(int direction);
+    virtual void Move() = 0;
+    virtual void Render(long int &frame, SDL_Renderer *gRenderer, bool debug) = 0;
 };
-
-
-
