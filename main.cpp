@@ -17,7 +17,10 @@
 #include "Metal.hpp"
 #include "Paper.hpp"
 #include "Plastic.hpp"
-
+#include "Paper.hpp"
+#include "paperBall.hpp"
+#include "plasticBall.hpp"
+#include "metalBall.hpp"
 //Pre defined screen width and height
 const int SCREEN_WIDTH = 1024;
 const int SCREEN_HEIGHT = 600;
@@ -37,6 +40,7 @@ LTexture gBGtexture;
 LTexture gPaper;
 LTexture gMetal;
 LTexture gPlastic;
+LTexture gballs;
 
 bool init();
 bool loadMedia();
@@ -60,7 +64,8 @@ int main(int argc, char *args[])
         {
 
             bool quit = false; //Main loop flag
-            list<Trash *> trashlist;
+            list<Unit *> objectlist;
+            //list<ball*> ballList;
             SDL_Event e; //Event handler
             long int trashframe = 0;
             long int delaytrash = 0;
@@ -82,6 +87,7 @@ int main(int argc, char *args[])
             Unit *player = new Player(&gSpriteSheetTexture, (float)SCREEN_WIDTH / 2, (float)SCREEN_HEIGHT - 80);
             //Unit *metal = NULL;
             Trash *trash = NULL;
+            ball *balls = NULL;
             //   Unit* enemy = NULL;
             //   Unit* bullet = NULL;
 
@@ -103,7 +109,7 @@ int main(int argc, char *args[])
                     {
                         trash = new Plastic(&gPlastic, random, -100);
                     }
-                    trashlist.push_back(trash);
+                    objectlist.push_back(trash);
                 }
                 while (SDL_PollEvent(&e) != 0) //Handle events on queue
                 {
@@ -135,12 +141,12 @@ int main(int argc, char *args[])
 
                 if (currentKeyStates[SDL_SCANCODE_SPACE])
                 {
-                    //   if(bulletDelay > 60)
-                    //     {
-                    //       bullet = new Bullet(&gSpriteSheetTexture,plane->GetX(), plane->GetY() - plane->GetHeight()/2);
-                    //       objectList.Enqueue(bullet);
-                    //       bulletDelay = 0;
-                    //     }
+                    if (ballDelay > 60)
+                    {
+                        balls = new metalBall(&gballs, player->GetX(), player->GetY() - player->GetHeight() / 2);
+                        objectlist.push_back(balls);
+                        ballDelay = 0;
+                    }
                 }
 
                 SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF); //Clear screen
@@ -152,7 +158,7 @@ int main(int argc, char *args[])
                 gBGtexture.Render(0, scrollingOffset - gBGtexture.GetWidth() + 210, NULL, 0.0, NULL, SDL_FLIP_VERTICAL, gRenderer, 0);
                 player->Render(frame, gRenderer, false);
                 //paper->Render(trashframe, gRenderer, false);
-                for (std::list<Trash *>::iterator it = trashlist.begin(); it != trashlist.end(); ++it)
+                for (std::list<Unit *>::iterator it = objectlist.begin(); it != objectlist.end(); ++it)
                 {
 
                     (*it)->Render(trashframe, gRenderer, false);
@@ -163,6 +169,7 @@ int main(int argc, char *args[])
                 SDL_RenderPresent(gRenderer); //Update screen
                 frame = ((SDL_GetTicks() - startTime) * animationRate / 1000) % animationLength;
                 ++delaytrash;
+                ++ballDelay;
                 cout << frame << "\n";
                 //++frame;                            //Go to next frame
                 //++bulletDelay;
@@ -258,6 +265,11 @@ bool loadMedia()
         success = false;
     }
     if (!gPlastic.LoadFromFile("images/pb1.png", gRenderer))
+    {
+        printf("Failed to load paper texture!\n");
+        success = false;
+    }
+    if (!gballs.LoadFromFile("colored-balls.png", gRenderer))
     {
         printf("Failed to load paper texture!\n");
         success = false;

@@ -1,20 +1,20 @@
 #pragma once
 
-#include"Player.hpp"
+#include "Unit.hpp"
 
-class ball: public Player
+class ball : public Unit
+{
+protected:
+  enum
   {
-    protected:
-    enum {
-        BALL_FRAMES = 1
-    };
-    SDL_Rect spriteClips[BALL_FRAMES];
+    BALL_FRAMES = 1
+  };
+  SDL_Rect spriteClips[BALL_FRAMES];
 
-    
-  public:
-    ball(LTexture* image, float x, float y);
-    ball();
-    virtual ~ball();
-    virtual void Move() = 0;
-    virtual void Render(long int& frame, SDL_Renderer* gRenderer, bool debug);
+public:
+  ball(LTexture *image, float x, float y);
+  ball();
+  virtual ~ball();
+  virtual void Move() = 0;
+  virtual void Render(long int &frame, SDL_Renderer *gRenderer, bool debug);
 };
