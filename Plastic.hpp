@@ -1,8 +1,17 @@
+#pragma once
+#include <iostream>
 #include "Trash.hpp"
 
-class Plastic : public Trash
+class Plastic: public Trash
 {
+private:
+    
+public:
+
     Plastic();
-    ~Plastic();
-    void move();
+    Plastic(LTexture* bodyImg,  float x, float y);
+    virtual ~Plastic();
+    virtual void Render(long int &frame, SDL_Renderer *gRenderer, bool debug);
+    virtual void Move();
+    void Draw(SDL_Renderer* gRenderer);
 };
