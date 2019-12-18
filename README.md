@@ -95,14 +95,18 @@ The game is interactive with the user, proceeds with user input. The game starts
 ###### Rabeea Atif
 
 1)Hpp and cpp files of all the screens. (Screen, startscreen, win screen, lose screen)
+
 2)Hpp and cpp files of all the trash along  with their sprites rendering on the screen.
+
 3)STL list to render sprites.
+
 4)Initial UML classes implementation
+
 5)Final UML diagram implementation
 
 ###### Farah Naz
 
-1) Farah workd on the following classes: Unit, Player, Button, Collision, Score, ball and its children.
+1) Farah worked on the following classes: Unit, Player, Button, Collision, Score, ball and its children.
 
 2) Also contributed to the development of screens
 
