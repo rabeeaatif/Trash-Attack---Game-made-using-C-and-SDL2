@@ -427,17 +427,17 @@ bool loadMedia()
         printf("Failed to load background texture!\n");
         success = false;
     }
-    if (!gPaper.LoadFromFile("images/paper1.png", gRenderer))
+    if (!gPaper.LoadFromFile("paper1.png", gRenderer))
     {
         printf("Failed to load paper texture!\n");
         success = false;
     }
-    if (!gMetal.LoadFromFile("images/tincan.png", gRenderer))
+    if (!gMetal.LoadFromFile("tincan.png", gRenderer))
     {
         printf("Failed to load paper texture!\n");
         success = false;
     }
-    if (!gPlastic.LoadFromFile("images/pb1.png", gRenderer))
+    if (!gPlastic.LoadFromFile("pb1.png", gRenderer))
     {
         printf("Failed to load paper texture!\n");
         success = false;
@@ -469,7 +469,7 @@ bool loadMedia()
         success = false;
     }
     // load sound
-    buttonClick = Mix_LoadWAV("Sounds/button_click.wav");
+    buttonClick = Mix_LoadWAV("button_click.wav");
     if (buttonClick == NULL)
     {
         printf("Failed to load buttonClick sound effect! SDL_mixer Error: %s\n", Mix_GetError());
