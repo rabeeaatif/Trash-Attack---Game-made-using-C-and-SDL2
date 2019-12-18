@@ -23,12 +23,15 @@ private:
         MOVING_FRAMES = 9
     };
     SDL_Rect spriteClips[MOVING_FRAMES];
+    static Player *instance; // pointer to the player object
+    static int instances; // number of instances of the player object
+    Player(LTexture *image, float x, float y); // private constructor of the player
+    Player();
 
 public:
-    Player(LTexture *image, float x, float y);
-    Player();
     virtual ~Player();
     virtual void Move(int direction);
-    void Move();
+    static Player *get_instance(LTexture *, float, float); // returns the new or the already existing instance of player
+    bool check_collision(Unit *);
     void Render(long int &frame, SDL_Renderer *gRenderer, bool debug);
 };

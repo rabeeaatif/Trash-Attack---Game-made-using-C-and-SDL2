@@ -16,20 +16,15 @@ Trash::Trash(LTexture *image, float x, float y) : Unit(image, x, y)
 
 void Trash::Move()
 {
-  //speedx = speedx * friction;
-  //speedy = speedy * friction;
-
-  //x = x + speedx;
-  y = y + 2; //speedy;
-  if (y > 900)
-  {
-    SetAlive(false);
-  }
+}
+void Trash::set_speed(int speed)
+{
+  trashspeed = speed;
 }
 
 void Trash::Render(long int &frame, SDL_Renderer *gRenderer, bool debug)
 {
-  spriteSheetTexture->Render(x - width / 2, y - height / 2, &spriteClips[frame % MOVING_FRAMES], 0.0, NULL, SDL_FLIP_VERTICAL, gRenderer);
+  spriteSheetTexture->Render(x - width / 2, y - height / 2, &spriteClips[frame % MOVING_FRAMES], gRenderer, 0.0, NULL, SDL_FLIP_VERTICAL);
   if (debug == true)
   {
     SDL_Rect rect = {x - width / 2, y - height / 2, width, height};

@@ -6,6 +6,7 @@
 #include <cstdio>
 #include <iostream>
 #include "LTexture.hpp"
+#include <list>
 
 using namespace std;
 enum MOTION
@@ -16,13 +17,13 @@ enum MOTION
 class Unit
 {
 protected:
-    bool alive;
+    bool alive; // whether the object is alive or not
     int x;
     int y;
-    float speedx;
-    float speedy;
-    int width;
+    int width; 
     int height;
+    string type; // the type of the instance of the object
+    int speedx; 
     LTexture *spriteSheetTexture;
 
 public:
@@ -33,9 +34,11 @@ public:
     bool GetAlive();
     int GetWidth();
     int GetHeight();
+    string GetType();
     float GetX();
     float GetY();
-    virtual void Move(int direction);
-    virtual void Move() = 0;
+    virtual bool check_collision(Unit *) = 0; //checks collision 
+    virtual void Move(int direction); // for player
+    virtual void Move(); // for other objects 
     virtual void Render(long int &frame, SDL_Renderer *gRenderer, bool debug) = 0;
 };
