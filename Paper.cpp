@@ -1,30 +1,31 @@
 #include <iostream>
-#include "Plastic.hpp"
+#include "Paper.hpp"
 
-Plastic::Plastic()
+Paper::Paper()
 {
 }
 
-Plastic::~Plastic()
+Paper::~Paper()
 {
-  cout << "Plastic Deallocated" << endl;
+  cout << "Paper Deallocated" << endl;
 }
 
-Plastic::Plastic(LTexture *image, float x, float y) : Trash(image, x, y)
+Paper::Paper(LTexture *image, float x, float y) : Trash(image, x, y)
 {
   spriteSheetTexture = image;
 
   //Frame 0
+
   spriteClips[0].x = 0;
   spriteClips[0].y = 0;
-  spriteClips[0].w = 75;
-  spriteClips[0].h = 50;
+  spriteClips[0].h = 48;
+  spriteClips[0].w = 50;
 
   this->width = spriteClips[0].w;
   this->height = spriteClips[0].h;
-  type = "plastic";
+  type = "paper";
 }
-bool Plastic::check_collision(Unit *sprite)
+bool Paper::check_collision(Unit *sprite)
 {
   if ((this->GetX() >= sprite->GetX() && this->GetX() <= (sprite->GetX() + sprite->GetWidth())) ||
       ((this->GetX() + this->GetWidth()) >= sprite->GetX() && (this->GetX() + this->GetWidth()) <= (sprite->GetX() + sprite->GetWidth())))
@@ -39,12 +40,8 @@ bool Plastic::check_collision(Unit *sprite)
   }
   return false;
 }
-void Plastic::Move()
+void Paper::Move()
 {
-  //speedx = speedx * friction;
-  //speedy = speedy * friction;
-
-  //x = x + speedx;
   y = y + trashspeed; //speedy;
   if (y > 700)
   {
@@ -52,7 +49,7 @@ void Plastic::Move()
   }
 }
 
-void Plastic::Render(long int &frame, SDL_Renderer *gRenderer, bool debug)
+void Paper::Render(long int &frame, SDL_Renderer *gRenderer, bool debug)
 {
   spriteSheetTexture->Render(x - width / 2, y - height / 2, &spriteClips[frame % MOVING_FRAMES], gRenderer, 0.0, NULL, SDL_FLIP_VERTICAL);
   if (debug == true)

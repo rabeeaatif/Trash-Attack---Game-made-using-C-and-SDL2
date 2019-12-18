@@ -1,30 +1,39 @@
 #include <iostream>
-#include "Plastic.hpp"
+#include "Metal.hpp"
 
-Plastic::Plastic()
+Metal::Metal()
 {
 }
 
-Plastic::~Plastic()
+Metal::~Metal()
 {
-  cout << "Plastic Deallocated" << endl;
+  cout << "Metal Deallocated" << endl;
 }
-
-Plastic::Plastic(LTexture *image, float x, float y) : Trash(image, x, y)
+Metal::Metal(LTexture *image, float x, float y) : Trash(image, x, y)
 {
+
   spriteSheetTexture = image;
 
   //Frame 0
   spriteClips[0].x = 0;
   spriteClips[0].y = 0;
-  spriteClips[0].w = 75;
+  spriteClips[0].w = 50;
   spriteClips[0].h = 50;
 
   this->width = spriteClips[0].w;
   this->height = spriteClips[0].h;
-  type = "plastic";
+  type = "metal";
 }
-bool Plastic::check_collision(Unit *sprite)
+
+void Metal::Move()
+{
+  y = y + trashspeed; //speedy;
+  if (y > 700)
+  {
+    SetAlive(false);
+  }
+}
+bool Metal::check_collision(Unit *sprite)
 {
   if ((this->GetX() >= sprite->GetX() && this->GetX() <= (sprite->GetX() + sprite->GetWidth())) ||
       ((this->GetX() + this->GetWidth()) >= sprite->GetX() && (this->GetX() + this->GetWidth()) <= (sprite->GetX() + sprite->GetWidth())))
@@ -39,20 +48,7 @@ bool Plastic::check_collision(Unit *sprite)
   }
   return false;
 }
-void Plastic::Move()
-{
-  //speedx = speedx * friction;
-  //speedy = speedy * friction;
-
-  //x = x + speedx;
-  y = y + trashspeed; //speedy;
-  if (y > 700)
-  {
-    SetAlive(false);
-  }
-}
-
-void Plastic::Render(long int &frame, SDL_Renderer *gRenderer, bool debug)
+void Metal::Render(long int &frame, SDL_Renderer *gRenderer, bool debug)
 {
   spriteSheetTexture->Render(x - width / 2, y - height / 2, &spriteClips[frame % MOVING_FRAMES], gRenderer, 0.0, NULL, SDL_FLIP_VERTICAL);
   if (debug == true)
